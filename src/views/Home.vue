@@ -16,33 +16,15 @@
               <br />
               <span>{{ image.as }}</span>
             </a>
-            <ul>
-              <li>
-                <a href="#">
-                  <i class="fa fa-facebook" aria-hidden="true"></i>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <i class="fa fa-twitter" aria-hidden="true"></i>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <i class="fa fa-google-plus" aria-hidden="true"></i>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <i class="fa fa-linkedin" aria-hidden="true"></i>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <i class="fa fa-instagram" aria-hidden="true"></i>
-                </a>
-              </li>
-            </ul>
+            <viewer :images="image.others" v-viewer="propsViewer">
+              <img
+                v-for="src in image.others"
+                :src="src"
+                :key="src"
+                class="small-img"
+                @click="show()"
+              />
+            </viewer>
           </div>
         </div>
       </div>
@@ -53,6 +35,10 @@
 
 <script>
 // @ is an alias to /src
+import "viewerjs/dist/viewer.css";
+import Viewer from "v-viewer";
+import Vue from "vue";
+Vue.use(Viewer);
 export default {
   name: "Home",
   components: {},
@@ -64,7 +50,13 @@ export default {
           description: "des 1",
           as: "Frontend Developer",
           link: "https://myfooddiary.id/",
-          href: require("@/assets/nutri/mockuper.jpg")
+          href: require("@/assets/nutri/mockuper.jpg"),
+          others: [
+            require("@/assets/nutri/nutri1.jpg"),
+            require("@/assets/nutri/nutri2.jpg"),
+            require("@/assets/nutri/nutri3.jpg"),
+            require("@/assets/nutri/nutri4.jpg"),
+          ],
         },
         {
           title: "Omnia 3V",
@@ -72,39 +64,101 @@ export default {
           as: "Frontend Developer",
           link:
             "https://play.google.com/store/apps/details?id=com.company3v.omnia",
-          href: require("@/assets/omnia/mockuper.jpg")
+          href: require("@/assets/omnia/mockuper.jpg"),
+          others: [
+            require("@/assets/omnia/omnia1.jpg"),
+            require("@/assets/omnia/omnia2.jpg"),
+            require("@/assets/omnia/omnia3.jpg"),
+            require("@/assets/omnia/omnia4.jpg"),
+            require("@/assets/omnia/omnia5.jpg"),
+          ],
         },
         {
           title: "Papringan",
           description: "des 2",
           as: "Frontend Developer",
-          href: require("@/assets/papringan/mockuper.jpg")
+          href: require("@/assets/papringan/mockuper.jpg"),
+          others: [
+            require("@/assets/papringan/papringan1.jpg"),
+            require("@/assets/papringan/papringan2.jpg"),
+            require("@/assets/papringan/papringan3.jpg"),
+            require("@/assets/papringan/papringan4.jpg"),
+          ],
         },
         {
           title: "Infografis BKK Jateng",
           description: "des 2",
           as: "Frontend Developer",
-          href: require("@/assets/infografis/mockuper.jpg")
+          href: require("@/assets/infografis/mockuper.jpg"),
+          others: [
+            require("@/assets/infografis/infografis1.jpg"),
+            require("@/assets/infografis/infografis2.jpg"),
+            require("@/assets/infografis/infografis3.jpg"),
+            require("@/assets/infografis/infografis4.jpg"),
+          ],
         },
         {
           title: "DAMS",
           description: "des 2",
           as: "Frontend Developer",
-          href: require("@/assets/dams/mockuper.jpg")
+          href: require("@/assets/dams/mockuper.jpg"),
+          others: [
+            require("@/assets/dams/dams1.jpg"),
+            require("@/assets/dams/dams2.jpg"),
+            require("@/assets/dams/dams3.jpg"),
+            require("@/assets/dams/dams4.jpg"),
+          ],
         },
         {
           title: "CRMS",
           description: "des 2",
           as: "Frontend Developer",
-          href: require("@/assets/crms/mockuper.jpg")
-        }
-      ]
+          href: require("@/assets/crms/mockuper.jpg"),
+          others: [
+            require("@/assets/crms/crms1.jpg"),
+            require("@/assets/crms/crms2.jpg"),
+            require("@/assets/crms/crms3.jpg"),
+            require("@/assets/crms/crms4.jpg"),
+          ],
+        },
+      ],
+      propsViewer: {
+        inline: true,
+        button: true,
+        navbar: true,
+        title: true,
+        toolbar: true,
+        tooltip: true,
+        movable: true,
+        zoomable: true,
+        rotatable: true,
+        scalable: true,
+        transition: true,
+        fullscreen: true,
+        keyboard: true,
+        url: "data-source",
+      },
     };
-  }
+  },
+  methods: {
+    show() {
+      const viewer = this.$el.querySelector(".small-img").$viewer;
+      viewer.show();
+      console.info("ajja");
+    },
+  },
 };
 </script>
 
 <style lang="scss">
+.small-img {
+  cursor: pointer;
+  border-radius: 3px;
+  height: 20px;
+  width: 20px;
+  margin-right: 5px;
+  margin-left: 5px;
+}
 .title {
   color: #efbb35;
   font-size: 3.3em;
@@ -183,6 +237,8 @@ export default {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 .card .details .center a {
   margin: 0;
@@ -190,7 +246,6 @@ export default {
   color: #ff3636;
   line-height: 20px;
   font-size: 16px;
-  // text-transform: uppercase;
   text-decoration: none;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
