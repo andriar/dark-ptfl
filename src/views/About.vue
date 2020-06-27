@@ -1,59 +1,53 @@
 <template>
-  <div class="about">
-    <div class="container">
-      <div class="a-name">
-        <h1>Andriar Mafazan</h1>
-        <h1>Rizkiansah</h1>
+  <div class="container">
+    <div class="a-name">
+      <h1>Andriar Mafazan</h1>
+      <h1>Rizkiansah</h1>
+    </div>
+    <div class="a-proffesion">Software Engineer</div>
+    <div class="container-body">
+      <div class="a-title">Description</div>
+      <div class="a-desc">
+        I am a person who can adapt quickly and like to learn new things. I like
+        to sharing knowledge with others and i like the culture of startup
+        company. I have experience in working on team for planning and executing
+        a project using agile framework in developing applications.
       </div>
-      <div class="a-proffesion">Software Engineer</div>
-      <div class="container-body">
-        <div class="a-title">Description</div>
-        <div class="a-desc">
-          I am a person who can adapt quickly and like to learn new things. I
-          like to sharing knowledge with others and i like the culture of
-          startup company. I have experience in working on team for planning and
-          executing a project using agile framework in developing applications.
-        </div>
-      </div>
+    </div>
 
-      <div class="container-body">
-        <div class="a-title">Detail</div>
-        <div class="a-detail">
-          <div class="a-group">
-            <div class="a-group-detail">
-              <div class="a-detail-title">Birth</div>
-              <div class="a-detail-body">May 1995</div>
-            </div>
-            <div class="a-group-detail">
-              <div class="a-detail-title">Address</div>
-              <div class="a-detail-body">Jambu, Kabupaten Semarang</div>
-            </div>
+    <div class="container-body">
+      <div class="a-title">Detail</div>
+      <div class="a-detail">
+        <div class="a-group">
+          <div class="a-group-detail">
+            <div class="a-detail-title">Birth</div>
+            <div class="a-detail-body">May 1995</div>
           </div>
-
-          <div class="a-group">
-            <div class="a-group-detail">
-              <div class="a-detail-title">Email</div>
-              <div class="a-detail-body">andriar.fazzan@gmail.com</div>
-            </div>
-            <div class="a-group-detail">
-              <div class="a-detail-title">Develop</div>
-              <div class="a-detail-body">Web, Mobile</div>
-            </div>
+          <div class="a-group-detail">
+            <div class="a-detail-title">Address</div>
+            <div class="a-detail-body">Jambu, Kabupaten Semarang</div>
           </div>
         </div>
-      </div>
 
-      <div class="container-body">
-        <div class="a-title">Skills</div>
-        <div class="a-skills">
-          <div
-            class="a-skills-div"
-            v-for="(skill, index) in skills"
-            :key="index"
-          >
-            <div>{{ skill.name }}</div>
-            <div>{{ skill.level }}</div>
+        <div class="a-group">
+          <div class="a-group-detail">
+            <div class="a-detail-title">Email</div>
+            <div class="a-detail-body">andriar.fazzan@gmail.com</div>
           </div>
+          <div class="a-group-detail">
+            <div class="a-detail-title">Develop</div>
+            <div class="a-detail-body">Web, Mobile</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-body">
+      <div class="a-title">Skills</div>
+      <div class="a-skills">
+        <div class="a-skills-div" v-for="(skill, index) in skills" :key="index">
+          <div>{{ skill.name }}</div>
+          <div>{{ skill.level }}</div>
         </div>
       </div>
     </div>
@@ -161,6 +155,7 @@ export default {
   padding-left: 100px;
   padding-right: 100px;
   margin-bottom: 100px;
+  margin-bottom: -100px;
 }
 
 .a-name {
@@ -203,7 +198,7 @@ export default {
 .a-skills {
   display: flex;
   flex-wrap: wrap;
-  flex: 3;
+  flex: 2;
 }
 
 .a-skills-div {
