@@ -2,7 +2,7 @@
   <div class="home">
     <p class="title">What have I made? <span>?</span></p>
     <div class="container-card">
-      <div class="card" v-for="image in images" :key="image">
+      <div class="card" v-for="(image, index) in images" :key="index">
         <div class="image">
           <img :src="image.href.toString()" />
         </div>
