@@ -177,7 +177,7 @@ export default {
 
 .container-body {
   padding-top: 20px;
-  padding-bottom: 50px;
+  padding-bottom: 20px;
   display: flex;
   flex-direction: row;
 }
@@ -190,6 +190,8 @@ export default {
 }
 
 .a-desc {
+  padding-left: 20px;
+  padding-right: 20px;
   flex: 3;
   text-align: justify;
   color: #fff;
@@ -235,7 +237,7 @@ export default {
   display: flex;
   flex-direction: column;
   flex: 1;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 .a-detail-title {
