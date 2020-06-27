@@ -1,6 +1,9 @@
 <template>
   <div class="home">
-    <p class="title">What have I made? <span>?</span></p>
+    <p class="title">
+      What have I made
+      <span>?</span>
+    </p>
     <div class="container-card">
       <div class="card" v-for="(image, index) in images" :key="index">
         <div class="image">
@@ -9,37 +12,42 @@
         <div class="details">
           <div class="center">
             <a :href="image.link" target="_blank" rel="noopener noreferrer">
-              {{ image.title }}<br /><span>{{ image.as }}</span>
+              {{ image.title }}
+              <br />
+              <span>{{ image.as }}</span>
             </a>
             <ul>
               <li>
-                <a href="#"
-                  ><i class="fa fa-facebook" aria-hidden="true"></i
-                ></a>
+                <a href="#">
+                  <i class="fa fa-facebook" aria-hidden="true"></i>
+                </a>
               </li>
               <li>
-                <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                <a href="#">
+                  <i class="fa fa-twitter" aria-hidden="true"></i>
+                </a>
               </li>
               <li>
-                <a href="#"
-                  ><i class="fa fa-google-plus" aria-hidden="true"></i
-                ></a>
+                <a href="#">
+                  <i class="fa fa-google-plus" aria-hidden="true"></i>
+                </a>
               </li>
               <li>
-                <a href="#"
-                  ><i class="fa fa-linkedin" aria-hidden="true"></i
-                ></a>
+                <a href="#">
+                  <i class="fa fa-linkedin" aria-hidden="true"></i>
+                </a>
               </li>
               <li>
-                <a href="#"
-                  ><i class="fa fa-instagram" aria-hidden="true"></i
-                ></a>
+                <a href="#">
+                  <i class="fa fa-instagram" aria-hidden="true"></i>
+                </a>
               </li>
             </ul>
           </div>
         </div>
       </div>
     </div>
+    <footer>&copy;2020, All Rights Reserved.</footer>
   </div>
 </template>
 
@@ -56,7 +64,7 @@ export default {
           description: "des 1",
           as: "Frontend Developer",
           link: "https://myfooddiary.id/",
-          href: require("@/assets/nutri/mockuper.png"),
+          href: require("@/assets/nutri/mockuper.jpg")
         },
         {
           title: "Omnia 3V",
@@ -64,35 +72,35 @@ export default {
           as: "Frontend Developer",
           link:
             "https://play.google.com/store/apps/details?id=com.company3v.omnia",
-          href: require("@/assets/omnia/mockuper.png"),
+          href: require("@/assets/omnia/mockuper.jpg")
         },
         {
           title: "Papringan",
           description: "des 2",
           as: "Frontend Developer",
-          href: require("@/assets/papringan/mockuper.png"),
+          href: require("@/assets/papringan/mockuper.jpg")
         },
         {
           title: "Infografis BKK Jateng",
           description: "des 2",
           as: "Frontend Developer",
-          href: require("@/assets/infografis/mockuper.png"),
+          href: require("@/assets/infografis/mockuper.jpg")
         },
         {
           title: "DAMS",
           description: "des 2",
           as: "Frontend Developer",
-          href: require("@/assets/dams/mockuper.png"),
+          href: require("@/assets/dams/mockuper.jpg")
         },
         {
           title: "CRMS",
           description: "des 2",
           as: "Frontend Developer",
-          href: require("@/assets/crms/mockuper.png"),
-        },
-      ],
+          href: require("@/assets/crms/mockuper.jpg")
+        }
+      ]
     };
-  },
+  }
 };
 </script>
 
@@ -106,8 +114,8 @@ export default {
 }
 
 .title span {
-  font-size: 4.3em;
-  font-weight: 900;
+  font-size: 2em;
+  font-weight: 300;
 }
 
 .home {
@@ -117,12 +125,22 @@ export default {
   padding-right: 20px;
 }
 
+@keyframes pulse {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .container-card {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   flex: 1;
   justify-content: center;
+  animation: pulse 5s;
 }
 .card {
   transform: translate(0%);
@@ -211,5 +229,13 @@ export default {
 }
 .card .details .center ul li a:hover {
   background: #ff3636;
+}
+
+footer {
+  text-align: center;
+  font-size: 12px;
+  padding: 10px;
+  background-color: #222831;
+  color: white;
 }
 </style>
