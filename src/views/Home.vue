@@ -38,6 +38,8 @@
 import "viewerjs/dist/viewer.css";
 import Viewer from "v-viewer";
 import Vue from "vue";
+import { page } from "vue-analytics";
+
 Vue.use(Viewer);
 export default {
   name: "Home",
@@ -140,10 +142,8 @@ export default {
       },
     };
   },
-  mounted: {
-    track() {
-      this.$ga.page("/");
-    },
+  mounted() {
+    this.track2();
   },
   methods: {
     show() {
@@ -151,8 +151,8 @@ export default {
       viewer.show();
       console.info("ajja");
     },
-    track() {
-      this.$ga.page("/");
+    track2() {
+      page("/");
     },
   },
 };
