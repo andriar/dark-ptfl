@@ -55,8 +55,8 @@ export default {
             require("@/assets/nutri/nutri1.jpg"),
             require("@/assets/nutri/nutri2.jpg"),
             require("@/assets/nutri/nutri3.jpg"),
-            require("@/assets/nutri/nutri4.jpg")
-          ]
+            require("@/assets/nutri/nutri4.jpg"),
+          ],
         },
         {
           title: "Omnia 3V",
@@ -70,8 +70,8 @@ export default {
             require("@/assets/omnia/omnia2.jpg"),
             require("@/assets/omnia/omnia3.jpg"),
             require("@/assets/omnia/omnia4.jpg"),
-            require("@/assets/omnia/omnia5.jpg")
-          ]
+            require("@/assets/omnia/omnia5.jpg"),
+          ],
         },
         {
           title: "Papringan",
@@ -82,8 +82,8 @@ export default {
             require("@/assets/papringan/papringan1.jpg"),
             require("@/assets/papringan/papringan2.jpg"),
             require("@/assets/papringan/papringan3.jpg"),
-            require("@/assets/papringan/papringan4.jpg")
-          ]
+            require("@/assets/papringan/papringan4.jpg"),
+          ],
         },
         {
           title: "Infografis BKK Jateng",
@@ -94,8 +94,8 @@ export default {
             require("@/assets/infografis/infografis1.jpg"),
             require("@/assets/infografis/infografis2.jpg"),
             require("@/assets/infografis/infografis3.jpg"),
-            require("@/assets/infografis/infografis4.jpg")
-          ]
+            require("@/assets/infografis/infografis4.jpg"),
+          ],
         },
         {
           title: "DAMS",
@@ -106,8 +106,8 @@ export default {
             require("@/assets/dams/dams1.jpg"),
             require("@/assets/dams/dams2.jpg"),
             require("@/assets/dams/dams3.jpg"),
-            require("@/assets/dams/dams4.jpg")
-          ]
+            require("@/assets/dams/dams4.jpg"),
+          ],
         },
         {
           title: "CRMS",
@@ -118,9 +118,9 @@ export default {
             require("@/assets/crms/crms1.jpg"),
             require("@/assets/crms/crms2.jpg"),
             require("@/assets/crms/crms3.jpg"),
-            require("@/assets/crms/crms4.jpg")
-          ]
-        }
+            require("@/assets/crms/crms4.jpg"),
+          ],
+        },
       ],
       propsViewer: {
         inline: true,
@@ -136,9 +136,14 @@ export default {
         transition: true,
         fullscreen: true,
         keyboard: true,
-        url: "data-source"
-      }
+        url: "data-source",
+      },
     };
+  },
+  mounted: {
+    track() {
+      this.$ga.page("/");
+    },
   },
   methods: {
     show() {
@@ -148,8 +153,8 @@ export default {
     },
     track() {
       this.$ga.page("/");
-    }
-  }
+    },
+  },
 };
 </script>
 
