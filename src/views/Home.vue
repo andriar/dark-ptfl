@@ -48,6 +48,18 @@ export default {
     return {
       images: [
         {
+          title: "Mediv",
+          description: "E-commerce by Kimia Farma",
+          as: "Frontend Developer",
+          link: "https://myfooddiary.id/",
+          href: require("@/assets/mediv/mockuper.jpg"),
+          others: [
+            require("@/assets/mediv/mediv1.jpg"),
+            require("@/assets/mediv/mediv2.jpg"),
+            require("@/assets/mediv/mediv3.jpg"),
+          ],
+        },
+        {
           title: "My Food Diary",
           description: "des 1",
           as: "Frontend Developer",
