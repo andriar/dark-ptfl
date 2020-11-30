@@ -44,6 +44,45 @@
       </div>
     </div>
 
+    <div class="profile-container">
+      <div class="detail-diri">
+        <div>
+          <div>BIRTH</div>
+          <div>May 1995</div>
+        </div>
+        <div>
+          <div>ADDRESS</div>
+          <div>Semarang</div>
+        </div>
+        <div>
+          <div>PHONE</div>
+          <div>+62 8988862662</div>
+        </div>
+        <div>
+          <div>MAIL</div>
+          <div>andriar.fazzan@gmail.com</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="profile-container">
+      <div class="detail-diri">
+        <ul style="list-style-type:disc;">
+          <li v-for="(work, index) in workExperiences" :key="index">
+            <div>
+              {{ work.company }}
+              <span class="a-label-yellow" v-if="work.current">on going</span>
+            </div>
+            <div class="subtitle">
+              {{
+                `${work.title} ${work.startAt} - ${work.endAt} (${work.location}) as ${work.status}`
+              }}
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
     <p class="title">
       What have I made
       <span>?</span>
@@ -55,11 +94,12 @@
         </div>
         <div class="details">
           <div class="center">
-            <a :href="image.link" target="_blank" rel="noopener noreferrer">
+            <div
+              @click="goTo(image.link)"
+              style="cursor:pointer; margin-bottom: 10px; color: #2f495e"
+            >
               {{ image.title }}
-              <br />
-              <span>{{ image.as }}</span>
-            </a>
+            </div>
             <viewer :images="image.others" v-viewer="propsViewer">
               <img
                 v-for="src in image.others"
@@ -73,6 +113,33 @@
         </div>
       </div>
     </div>
+
+    <modal name="my-first-modal">
+      <div class="container-modal">
+        <div class="title-modal">{{ project.title }}</div>
+        <div class="container-modal-body">
+          <div class="subtitle-modal">DATE</div>
+          <div>{{ project.date }}</div>
+        </div>
+        <div class="container-modal-body">
+          <div class="subtitle-modal">DESCRIPTION</div>
+          <div>{{ project.description }}</div>
+        </div>
+        <div class="container-modal-body">
+          <div class="subtitle-modal">AS</div>
+          <div class="container-as-modal-1">
+            <div
+              class="container-as-modal"
+              v-for="(person, index) in project.team"
+              :key="index"
+            >
+              <div>{{ person.name }}</div>
+              <div class="as-modal">{{ person.as }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </modal>
 
     <footer>&copy;2020, All Rights Reserved.</footer>
   </div>
@@ -97,6 +164,62 @@ export default {
   data() {
     return {
       profile: require("@/assets/pp.jpg"),
+      workExperiences: [
+        {
+          company: "WIR GROUP",
+          title: "Frontend Developer",
+          startAt: "Aug 2020",
+          endAt: "Jan 2021",
+          location: "Yogyakarta",
+          status: "Contract 6 Month",
+          current: true,
+        },
+        {
+          company: "PT. RENJANA MEMBANGUN NUSANTARA",
+          title: "Software Engineer",
+          startAt: "Sept 2018",
+          endAt: "Aug 2018",
+          location: "Semarang",
+          status: "Employee",
+          current: false,
+        },
+        {
+          company: "FTI UKSW",
+          title: "Lecturer Assistant",
+          startAt: "Jun 2018",
+          endAt: "Aug 2018",
+          location: "Salatiga",
+          status: "Contract 4 Month",
+          current: false,
+        },
+        {
+          company: "LPMAI UKSW",
+          title: "Software Developer",
+          startAt: "Jan 2018",
+          endAt: "Apr 2018",
+          location: "Salatiga",
+          status: "Intern",
+          current: false,
+        },
+        {
+          company: "PT. INDONESIA COMNET PLUS",
+          title: "Software Developer",
+          startAt: "Oct 2017",
+          endAt: "Dec 2017",
+          location: "Jakarta",
+          status: "Intern",
+          current: false,
+        },
+        {
+          company: "FTI UKSW",
+          title: "IT Support (laboran)",
+          startAt: "Sept 2015",
+          endAt: "Sept 2017",
+          location: "Salatiga",
+          status: "Employee",
+          current: false,
+        },
+      ],
       socialMedia: [
         {
           image: require("@/assets/icons/instagram.svg"),
@@ -124,11 +247,49 @@ export default {
           desciption: "Profil Github Andriar Mafazan Rizkiansah",
         },
       ],
+      project: {
+        title: "",
+        description: "",
+        as: "",
+        link: "",
+        client: "",
+        date: "",
+        team: [
+          {
+            name: "",
+            as: "",
+          },
+        ],
+      },
       images: [
         {
           title: "Mediv",
-          description: "E-commerce by Kimia Farma",
+          description: "Mediv is an e-commerce application from KIMIA FARMA.",
           as: "Frontend Developer",
+          client: "KIMIA FARMA",
+          date: "August 2020",
+          team: [
+            {
+              name: "Andriar Mafazan",
+              as: "Frontend Developer Backoffice (CMS)",
+            },
+            {
+              name: "Andriar Mafazan",
+              as: "Frontend Developer Backoffice (CMS)",
+            },
+            {
+              name: "Andriar Mafazan",
+              as: "Frontend Developer Backoffice (CMS)",
+            },
+            {
+              name: "Andriar Mafazan",
+              as: "Frontend Developer Backoffice (CMS)",
+            },
+            {
+              name: "Andriar Mafazan",
+              as: "Frontend Developer Backoffice (CMS)",
+            },
+          ],
           link:
             "https://play.google.com/store/apps/details?id=com.kimiafarma.mediv",
           href: require("@/assets/mediv/mockuper.jpg"),
@@ -136,6 +297,18 @@ export default {
             require("@/assets/mediv/mediv1.jpg"),
             require("@/assets/mediv/mediv2.jpg"),
             require("@/assets/mediv/mediv3.jpg"),
+          ],
+        },
+        {
+          title: "Polapikir",
+          description: "des 1",
+          as: "Frontend Developer",
+          link: "https://play.google.com/store/apps/details?id=com.polapikir",
+          href: require("@/assets/polapikir/mockuper.jpg"),
+          others: [
+            require("@/assets/polapikir/polapikir1.jpeg"),
+            require("@/assets/polapikir/polapikir2.jpeg"),
+            require("@/assets/polapikir/polapikir3.jpeg"),
           ],
         },
         {
@@ -235,7 +408,6 @@ export default {
   },
   mounted() {
     this.track2();
-    this.$modal.show("my-first-modal");
   },
   methods: {
     show() {
@@ -245,6 +417,10 @@ export default {
     },
     track2() {
       page("/");
+    },
+    selectedProject(payload) {
+      this.project = payload;
+      this.$modal.show("my-first-modal");
     },
     goTo(url) {
       window.open(url);
@@ -441,6 +617,7 @@ footer {
   align-items: center;
   display: flex;
   flex-direction: column;
+  padding: 35px 0px 35px 0px;
 }
 
 .profile {
@@ -475,6 +652,85 @@ footer {
   margin: 100px;
 }
 
+.detail-diri {
+  // width: 850px;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  flex-direction: row;
+  background-color: #2c333f;
+  border-radius: 10px;
+  margin: 30px 0px 30px 0px;
+  flex-wrap: wrap;
+}
+
+.detail-diri div {
+  flex-direction: column;
+  flex: 2;
+  min-width: 180px;
+  margin: 2px 0px 2px 0px;
+}
+
+.detail-diri div div:nth-child(1) {
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 3px;
+  margin-bottom: 5px;
+}
+
+.detail-diri div div:nth-child(2) {
+  color: white;
+}
+
+.detail-diri ul {
+  color: white;
+}
+
+.detail-diri ul li {
+  margin-bottom: 15px;
+}
+
+.subtitle {
+  color: #969595;
+}
+
+.container-modal {
+  padding: 20px;
+}
+
+.container-modal-body {
+  padding: 10px 0px 10px 0px;
+}
+
+.title-modal {
+  font-size: 24px;
+}
+
+.subtitle-modal {
+  padding-bottom: 3px;
+  font-size: 10px;
+  font-weight: bolder;
+  letter-spacing: 1px;
+}
+
+.container-as-modal-1 {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.container-as-modal {
+  margin-bottom: 5px;
+  min-width: 200px;
+}
+
+.as-modal {
+  font-size: 12px;
+  color: #969595;
+  padding-right: 20px;
+}
+
 @media screen and (max-width: 768px) {
   .profile {
     flex-direction: column-reverse;
@@ -506,6 +762,15 @@ footer {
 
   .modal {
     margin: 20px;
+  }
+
+  // .detail-diri {
+  //   flex-direction: column;
+  //   align-items: flex-start;
+  // }
+
+  .detail-diri div {
+    margin-bottom: 10px;
   }
 }
 </style>
