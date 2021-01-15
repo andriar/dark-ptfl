@@ -4,6 +4,7 @@ import App from "./App.vue";
 import VModal from "vue-js-modal";
 import Vue from "vue";
 import VueAnalytics from "vue-analytics";
+import VueLazyload from "vue-lazyload";
 import VueMeta from "vue-meta";
 import router from "./router";
 import store from "./store";
@@ -24,6 +25,7 @@ Vue.use(VModal, {
     height: "auto",
   },
 });
+Vue.use(VueLazyload);
 
 Vue.use(VueAnalytics, {
   id: "UA-175016604-1",

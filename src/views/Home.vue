@@ -90,7 +90,11 @@
     <div class="container-card">
       <div class="card" v-for="(image, index) in images" :key="index">
         <div class="image">
-          <img :src="image.href.toString()" />
+          <img
+            :src="image.href.toString()"
+            v-lazy="image.href.toString()"
+            :alt="image.title"
+          />
         </div>
         <div class="details">
           <div class="center">
@@ -102,9 +106,11 @@
             </div>
             <viewer :images="image.others" v-viewer="propsViewer">
               <img
-                v-for="src in image.others"
+                v-for="(src, index) in image.others"
                 :src="src"
-                :key="src"
+                :key="index"
+                v-lazy="src"
+                :alt="image.title"
                 class="small-img"
                 @click="show()"
               />
