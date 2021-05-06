@@ -175,9 +175,9 @@ export default {
           company: "WIR GROUP",
           title: "Frontend Developer",
           startAt: "Aug 2020",
-          endAt: "Jan 2021",
+          endAt: "Juli 2021",
           location: "Yogyakarta",
-          status: "Contract 6 Month",
+          status: "Contract 12 Month",
           current: true,
         },
         {
@@ -268,6 +268,25 @@ export default {
         ],
       },
       images: [
+        {
+          title: "Kemensos Test KND",
+          description: "is an apps to test online (Tes CPNS Disabilitas).",
+          as: "Frontend Developer",
+          client: "KEMENTRIAN SOSIAL INDONESIA",
+          date: "May 2020",
+          team: [
+            {
+              name: "Andriar Mafazan",
+              as: "Frontend Developer CMS and Client",
+            },
+          ],
+          link: "http://pes-dev.ojekin.xyz",
+          href: require("@/assets/kemensos/kemensos-1.jpg"),
+          others: [
+            require("@/assets/kemensos/kemensos-1.jpg"),
+            require("@/assets/kemensos/kemensos-2.jpg"),
+          ],
+        },
         {
           title: "Mediv",
           description: "Mediv is an e-commerce application from KIMIA FARMA.",
